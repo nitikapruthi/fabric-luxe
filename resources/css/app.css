@@ -6,6 +6,167 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary: #8b5a3c;
+    --color-primary-dark: #6b3d2a;
+    --color-secondary: #d4a574;
+    --color-accent: #c41e3a;
+    --color-light: #f5f3f0;
+    --color-dark: #2c2416;
+    
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Luxury Gradient Background */
+@layer utilities {
+    .luxury-gradient {
+        background: linear-gradient(135deg, #f5f3f0 0%, #e8e3de 100%);
+    }
+    
+    .luxury-gradient-dark {
+        background: linear-gradient(135deg, #8b5a3c 0%, #6b3d2a 100%);
+    }
+    
+    .luxury-gradient-accent {
+        background: linear-gradient(135deg, #d4a574 0%, #c41e3a 100%);
+    }
+    
+    /* Fabric Texture Pattern */
+    .fabric-texture {
+        background-image: 
+            repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 90, 60, 0.03) 2px, rgba(139, 90, 60, 0.03) 4px),
+            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 90, 60, 0.03) 2px, rgba(139, 90, 60, 0.03) 4px);
+    }
+    
+    /* Animations */
+    .fade-in {
+        animation: fadeIn 0.6s ease-in-out;
+    }
+    
+    .slide-up {
+        animation: slideUp 0.8s ease-out;
+    }
+    
+    .scale-on-hover {
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .scale-on-hover:hover {
+        transform: scale(1.05);
+    }
+    
+    .shine-effect {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .shine-effect::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        animation: shine 3s infinite;
+    }
+    
+    /* Typography */
+    .heading-serif {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+    
+    .heading-display {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+    
+    .text-luxury {
+        color: #8b5a3c;
+    }
+    
+    .text-accent {
+        color: #c41e3a;
+    }
+    
+    /* Luxury Buttons */
+    .btn-luxury {
+        @apply px-8 py-3 font-medium text-white transition-all duration-300 ease-out;
+        background: linear-gradient(135deg, #8b5a3c 0%, #6b3d2a 100%);
+        box-shadow: 0 10px 30px rgba(139, 90, 60, 0.2);
+    }
+    
+    .btn-luxury:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(139, 90, 60, 0.3);
+    }
+    
+    .btn-luxury-outline {
+        @apply px-8 py-3 font-medium transition-all duration-300 border-2;
+        border-color: #8b5a3c;
+        color: #8b5a3c;
+    }
+    
+    .btn-luxury-outline:hover {
+        @apply bg-gradient-to-r from-amber-50 to-transparent;
+    }
+    
+    /* Cards */
+    .card-luxury {
+        @apply rounded-lg shadow-lg transition-all duration-300 overflow-hidden;
+        background: #ffffff;
+        border: 1px solid #f0e9e1;
+    }
+    
+    .card-luxury:hover {
+        box-shadow: 0 20px 40px rgba(139, 90, 60, 0.15);
+        transform: translateY(-4px);
+    }
+    
+    /* Dividers */
+    .divider-luxury {
+        @apply bg-gradient-to-r from-transparent via-amber-900 to-transparent;
+        height: 1px;
+    }
+    
+    /* Badge */
+    .badge-luxury {
+        @apply inline-block px-3 py-1 text-xs font-semibold tracking-wide;
+        background: linear-gradient(135deg, #d4a574 0%, #c41e3a 100%);
+        color: white;
+        border-radius: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
